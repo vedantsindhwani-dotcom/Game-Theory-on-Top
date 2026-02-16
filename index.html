@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Theory Lab · blue edition</title>
+    <title>🎮 GAME THEORY ARCADE · FINANCE LEVELS</title>
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -17,576 +17,490 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, #b8e1ff 0%, #dbeafe 100%);
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050a);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            color: #1e293b;
+            padding: 15px;
+            color: #e0e0ff;
         }
 
-        .app {
-            max-width: 1200px;
+        /* Main arcade container */
+        .arcade {
+            max-width: 1300px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
-            box-shadow: 0 20px 40px -10px rgba(0, 80, 150, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            overflow: hidden;
+            background: rgba(10, 20, 40, 0.7);
+            backdrop-filter: blur(10px);
+            border: 3px solid #00f7ff;
+            border-radius: 60px;
+            box-shadow: 0 0 30px #00f7ff66, inset 0 0 20px #00aaff33;
+            padding: 30px 30px 20px;
         }
 
-        /* Top navigation */
-        .top-nav {
-            background: #ffffffcc;
-            backdrop-filter: blur(4px);
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #3b82f6;
+        /* Header with glitch effect */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .logo {
-            font-size: 1.8rem;
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #00f7ff;
+            text-shadow: 0 0 10px cyan, 0 0 20px blue;
+            letter-spacing: 4px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #b0b0ff;
+            background: #0a1a2f;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 40px;
+            border: 1px solid cyan;
+        }
+
+        /* Credits strip */
+        .credits {
+            background: #0a1424;
+            border: 2px solid #ff66cc;
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin: 15px 0 25px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffb3ff;
+            box-shadow: 0 0 15px hotpink;
+        }
+        .credits span {
+            color: #ffffff;
             font-weight: 700;
-            background: linear-gradient(145deg, #1e4b8f, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: #1f2a44;
+            padding: 4px 12px;
+            border-radius: 40px;
+            margin: 0 5px;
+            display: inline-block;
+            border: 1px solid #ff66cc;
         }
-        .nav-items {
+
+        /* Navigation tabs */
+        .nav-tabs {
             display: flex;
+            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
-        .nav-item {
+        .tab-btn {
             background: transparent;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
+            border: 2px solid cyan;
+            color: cyan;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 600;
-            color: #1e4b8f;
+            font-size: 1.2rem;
+            padding: 12px 28px;
+            border-radius: 60px;
             cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid transparent;
+            transition: 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px transparent;
         }
-        .nav-item i {
-            font-size: 1.1rem;
+        .tab-btn i {
+            margin-right: 8px;
         }
-        .nav-item:hover {
-            background: #e6f0ff;
-            border-color: #3b82f6;
+        .tab-btn:hover {
+            background: cyan;
+            color: #0a0f1e;
+            box-shadow: 0 0 20px cyan;
         }
-        .nav-item.active {
-            background: #3b82f6;
-            color: white;
-            box-shadow: 0 4px 10px #3b82f680;
-        }
-
-        /* Main content */
-        .main {
-            padding: 30px 35px;
+        .tab-btn.active {
+            background: cyan;
+            color: #0a0f1e;
+            box-shadow: 0 0 30px cyan;
         }
 
-        .experiment {
+        /* Game panels */
+        .game-panel {
             display: none;
+            animation: fadeIn 0.3s;
         }
-        .experiment.active {
+        .game-panel.active {
             display: block;
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .scenario {
-            background: white;
-            border-radius: 32px;
-            padding: 30px 35px;
+        /* Level card */
+        .level-card {
+            background: rgba(20, 30, 50, 0.8);
+            border: 3px solid #00f7ff;
+            border-radius: 50px;
+            padding: 30px;
             margin-bottom: 25px;
-            box-shadow: 0 15px 30px -12px rgba(30, 75, 140, 0.2);
-            border: 1px solid #cbd5e1;
+            box-shadow: 0 0 25px #00aaff, inset 0 0 15px #004466;
         }
-        .scenario h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1e4b8f;
+        .level-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffcc00;
+            text-shadow: 0 0 10px orange;
             margin-bottom: 15px;
         }
-        .scenario p {
+        .level-description {
+            background: #0a1a2f;
+            border-left: 8px solid #ff66cc;
+            padding: 20px;
+            border-radius: 30px;
             font-size: 1.1rem;
-            line-height: 1.6;
-            color: #2a1c44;
+            color: #c0c0ff;
             margin-bottom: 20px;
         }
-        .scenario .case-highlight {
-            background: #f0f9ff;
-            border-left: 6px solid #3b82f6;
-            padding: 20px 25px;
-            border-radius: 24px;
-            font-style: italic;
+        .case-box {
+            background: #111c30;
+            border: 2px dashed #00f7ff;
+            border-radius: 40px;
+            padding: 20px;
             margin: 20px 0;
-        }
-        .experiment-description {
-            background: #e6f0ff;
-            border-radius: 16px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            color: #1e4b8f;
-            border: 1px dashed #3b82f6;
+            color: #aaffff;
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
 
-        .decision-area {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 32px;
-            padding: 30px 35px;
-            box-shadow: 0 10px 20px -8px rgba(30, 75, 140, 0.15);
+        /* Controls */
+        .control-area {
+            background: #0e1a28;
+            border-radius: 60px;
+            padding: 30px;
+            border: 2px solid cyan;
         }
-        .decision-area h3 {
-            font-size: 1.4rem;
-            color: #1e4b8f;
+        .control-title {
+            font-size: 1.8rem;
+            color: #ffcc00;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .input-group {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             gap: 20px;
-            background: #f0f9ff;
+            background: #1a2a40;
             border-radius: 60px;
-            padding: 8px 8px 8px 28px;
+            padding: 10px 10px 10px 30px;
             margin: 20px 0;
-            border: 1px solid #3b82f6;
+            border: 1px solid cyan;
         }
         .input-group label {
+            font-size: 1.3rem;
             font-weight: 600;
-            color: #1e4b8f;
-            font-size: 1rem;
+            color: #ffb3ff;
         }
         .input-group input {
-            border: none;
-            background: white;
-            padding: 14px 20px;
+            background: #0e1a2a;
+            border: 2px solid cyan;
+            color: white;
+            font-size: 1.4rem;
+            padding: 12px 20px;
             border-radius: 50px;
-            width: 140px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            width: 150px;
             text-align: center;
-            border: 1px solid #3b82f6;
-            outline: none;
+            font-weight: 600;
         }
-        .input-group input:focus {
-            border-color: #1e4b8f;
-            box-shadow: 0 0 0 3px #3b82f640;
-        }
-
         .btn {
-            background: #3b82f6;
+            background: linear-gradient(145deg, #0066ff, #3300cc);
             border: none;
             color: white;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 600;
-            padding: 14px 32px;
+            font-size: 1.3rem;
+            padding: 16px 40px;
             border-radius: 60px;
-            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid #1e4b8f;
-            box-shadow: 0 5px 0 #1e4b8f;
-        }
-        .btn:hover {
-            background: #1e4b8f;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 0 #0f2b4f;
+            transition: 0.1s;
+            box-shadow: 0 8px 0 #001166, 0 10px 20px black;
+            border: 1px solid #66aaff;
         }
         .btn:active {
-            transform: translateY(5px);
-            box-shadow: 0 0 0 #1e4b8f;
+            transform: translateY(8px);
+            box-shadow: 0 0 0 #001166, 0 5px 10px black;
         }
+        .btn i { margin-right: 10px; }
 
-        .result-box {
-            background: white;
-            border-radius: 28px;
-            padding: 25px 30px;
-            margin-top: 30px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #1e293b;
-            border: 1px solid #3b82f6;
-            box-shadow: inset 0 2px 8px #f0f9ff, 0 10px 15px -10px #3b82f6;
-        }
-        .result-box h4 {
-            color: #1e4b8f;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .button-row {
+        .choice-row {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
             margin: 20px 0;
         }
         .choice-btn {
-            background: #f0f9ff;
-            border: 2px solid #3b82f6;
-            color: #1e4b8f;
+            background: #1a2a44;
+            border: 3px solid #ff66cc;
+            color: #ffb3ff;
+            font-size: 1.4rem;
             font-weight: 700;
-            padding: 14px 30px;
+            padding: 16px 30px;
             border-radius: 60px;
-            font-size: 1.1rem;
             cursor: pointer;
-            transition: 0.1s;
             flex: 1 1 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: 0.1s;
+            text-transform: uppercase;
         }
         .choice-btn:hover {
-            background: #dbeafe;
+            background: #ff66cc;
+            color: #0a0f1e;
+            border-color: white;
         }
         .choice-btn.selected {
-            background: #3b82f6;
-            color: white;
-            border-color: #1e4b8f;
+            background: #ff66cc;
+            color: #0a0f1e;
+            box-shadow: 0 0 20px hotpink;
         }
 
-        /* Footer with credits */
+        .result-box {
+            background: #0e1a2a;
+            border: 3px solid #ffcc00;
+            border-radius: 40px;
+            padding: 25px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #ffffaa;
+            box-shadow: inset 0 0 20px #ffaa00;
+        }
+        .result-box h4 {
+            color: #ffcc00;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
         .footer {
-            background: #ffffffcc;
-            backdrop-filter: blur(4px);
-            padding: 20px 30px;
             text-align: center;
-            border-top: 2px solid #3b82f6;
-        }
-        .credits-heading {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: #1e4b8f;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .credits {
+            margin-top: 30px;
+            color: #6688ff;
             font-size: 1rem;
-            color: #1e293b;
-            line-height: 1.6;
-        }
-        .credits span {
-            font-weight: 700;
-            color: #1e4b8f;
-            display: inline-block;
-        }
-        .credits span:not(:last-child)::after {
-            content: " · ";
-            color: #3b82f6;
-            font-weight: 400;
-        }
-        .footer-note {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 700px) {
-            .top-nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .main { padding: 20px; }
         }
     </style>
 </head>
 <body>
-<div class="app">
-    <!-- Top Navigation -->
-    <div class="top-nav">
-        <div class="logo">🎲 THEORY LAB</div>
-        <div class="nav-items">
-            <button class="nav-item active" data-experiment="pd">
-                <i class="fas fa-handcuffs"></i> Prisoner's Dilemma
-            </button>
-            <button class="nav-item" data-experiment="auction">
-                <i class="fas fa-gavel"></i> English Auction
-            </button>
-            <button class="nav-item" data-experiment="bargain">
-                <i class="fas fa-scale-balanced"></i> Nash Bargaining
-            </button>
+    <div class="arcade">
+        <div class="header">
+            <h1>🎮 FINANCE THEORY ARCADE</h1>
+            <p>LEVEL 1 · PRISONER · LEVEL 2 · AUCTION · LEVEL 3 · BARGAIN</p>
         </div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="main">
-        <!-- PRISONER'S DILEMMA -->
-        <div id="pd" class="experiment active">
-            <div class="scenario">
-                <h2>⚖️ Prisoner's Dilemma</h2>
-                <div class="experiment-description">
-                    <i class="fas fa-info-circle"></i> <strong>What it tests:</strong> Whether individuals cooperate or act in their own self‑interest, and how this affects group outcomes.
+        <!-- Credits with new names -->
+        <div class="credits">
+            <span>Vedant Sindhwani (2324290)</span>
+            <span>Kshitij N Cariappa (2324242)</span>
+            <span>Abhineet Katakwar (2324206)</span>
+            <span>Ayaganollu Harsha (2324219)</span>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-game="pd"><i class="fas fa-handcuffs"></i> Prisoner</button>
+            <button class="tab-btn" data-game="auction"><i class="fas fa-gavel"></i> Auction</button>
+            <button class="tab-btn" data-game="bargain"><i class="fas fa-scale-balanced"></i> Bargain</button>
+        </div>
+
+        <!-- PRISONER'S DILEMMA PANEL -->
+        <div id="pd" class="game-panel active">
+            <div class="level-card">
+                <div class="level-title">⚖️ PRISONER'S DILEMMA</div>
+                <div class="level-description">
+                    <i class="fas fa-info-circle"></i> <strong>THE CONCEPT:</strong> Two players choose to cooperate or defect. The outcome depends on both choices. Classic example of individual vs group rationality.
                 </div>
-                <p>You and a classmate are working on a group project that could win a ₹10,000 scholarship. Each of you can either <strong>share resources</strong> (cooperate) or <strong>keep everything to yourself</strong> (defect).</p>
-                <div class="case-highlight">
-                    <p><strong>🎓 The Group Project Dilemma</strong><br>
-                    • If both share, the project is excellent and you split the scholarship equally: ₹5,000 each.<br>
-                    • If you share but your partner keeps resources, you do all the work and get ₹0, while your partner gets ₹8,000 (because they used your work plus their own).<br>
-                    • If you keep resources and your partner shares, you get ₹8,000 and they get ₹0.<br>
-                    • If both keep resources, the project is mediocre and you each get a consolation prize of ₹2,000.</p>
+                <div class="case-box">
+                    <strong>🎓 THE SCHOLARSHIP CHALLENGE</strong><br>
+                    You and a teammate can win ₹10,000. If both share resources → ₹5,000 each.<br>
+                    If you share but partner keeps → you get ₹0, partner gets ₹8,000.<br>
+                    If you keep but partner shares → you get ₹8,000, partner ₹0.<br>
+                    If both keep → ₹2,000 each.
                 </div>
-                <p><strong>Your choice:</strong> Share resources or keep them. Your partner decides simultaneously.</p>
             </div>
-            <div class="decision-area">
-                <h3><i class="fas fa-question-circle"></i> What do you do?</h3>
-                <div class="button-row">
-                    <button id="pdCooperate" class="choice-btn"><i class="fas fa-handshake"></i> Share</button>
-                    <button id="pdDefect" class="choice-btn"><i class="fas fa-hand-fist"></i> Keep</button>
+            <div class="control-area">
+                <div class="control-title"><i class="fas fa-gamepad"></i> YOUR MOVE</div>
+                <div class="choice-row">
+                    <button id="pdCooperate" class="choice-btn"><i class="fas fa-handshake"></i> SHARE</button>
+                    <button id="pdDefect" class="choice-btn"><i class="fas fa-hand-fist"></i> KEEP</button>
                 </div>
+                <button class="btn" id="pdSubmit"><i class="fas fa-check"></i> SEE OUTCOME</button>
                 <div id="pdResult" class="result-box">
-                    <h4>📘 Game theory insight</h4>
-                    <p>Choose an option to see the analysis.</p>
+                    <h4>📊 RESULT</h4>
+                    <p>Choose an action and click the button.</p>
                 </div>
             </div>
         </div>
 
-        <!-- ENGLISH AUCTION -->
-        <div id="auction" class="experiment">
-            <div class="scenario">
-                <h2>🔨 English Auction</h2>
-                <div class="experiment-description">
-                    <i class="fas fa-info-circle"></i> <strong>What it tests:</strong> How people bid when they have private information about an item’s value, and the risk of overpaying (winner’s curse).
+        <!-- ENGLISH AUCTION PANEL -->
+        <div id="auction" class="game-panel">
+            <div class="level-card">
+                <div class="level-title">🔨 ENGLISH AUCTION</div>
+                <div class="level-description">
+                    <i class="fas fa-info-circle"></i> <strong>THE CONCEPT:</strong> Bidders compete for an item with private value. Highest bid wins and pays their bid. Risk of winner's curse.
                 </div>
-                <p>You are at an auction for a limited‑edition cricket bat signed by a famous player. Its true value to you (what you could resell it for) is random – between ₹1,000 and ₹10,000. A rival collector (computer) is also bidding.</p>
-                <div class="case-highlight">
-                    <p><strong>🏏 The Signed Bat Auction</strong><br>
-                    Your private valuation is shown below. You bid against a computer that bids randomly up to its own valuation. The highest bidder wins and pays their bid. If you win, your profit = valuation − your bid. If you lose, you get nothing.</p>
+                <div class="case-box">
+                    <strong>🏏 SIGNED BAT AUCTION</strong><br>
+                    Your private value: <span id="auctionValueDisplay">??</span> (random ₹1,000–10,000). Bid against a computer. If you win, profit = value − bid.
                 </div>
-                <p><strong>Your private valuation: ₹<span id="auctionValueDisplay">??</span></strong> (changes each round)</p>
             </div>
-            <div class="decision-area">
-                <h3><i class="fas fa-gavel"></i> Place your bid (₹)</h3>
+            <div class="control-area">
+                <div class="control-title"><i class="fas fa-gavel"></i> PLACE BID (₹)</div>
                 <div class="input-group">
-                    <label for="auctionBid">Your bid (1000‑10000)</label>
+                    <label>YOUR BID</label>
                     <input type="number" id="auctionBid" min="1000" max="10000" step="100" value="4000">
                 </div>
-                <button class="btn" id="auctionSubmit"><i class="fas fa-gavel"></i> Submit bid</button>
+                <button class="btn" id="auctionSubmit"><i class="fas fa-gavel"></i> BID NOW</button>
                 <div id="auctionResult" class="result-box">
-                    <h4>📘 Game theory insight</h4>
-                    <p>Place a bid to see the outcome and optimal strategy.</p>
+                    <h4>📊 RESULT</h4>
+                    <p>Enter a bid and click the button.</p>
                 </div>
             </div>
         </div>
 
-        <!-- NASH BARGAINING -->
-        <div id="bargain" class="experiment">
-            <div class="scenario">
-                <h2>🤝 Nash Bargaining</h2>
-                <div class="experiment-description">
-                    <i class="fas fa-info-circle"></i> <strong>What it tests:</strong> How two parties negotiate the division of a surplus, and how hidden “walk‑away” thresholds affect the outcome.
+        <!-- NASH BARGAINING PANEL -->
+        <div id="bargain" class="game-panel">
+            <div class="level-card">
+                <div class="level-title">🤝 NASH BARGAINING</div>
+                <div class="level-description">
+                    <i class="fas fa-info-circle"></i> <strong>THE CONCEPT:</strong> Two parties split a surplus. One proposes a division, the other has a secret minimum acceptable amount. If demand too high, both get zero.
                 </div>
-                <p>Two startups, <strong>TechNovate</strong> (you) and <strong>InnoSys</strong> (the other), are merging. The combined entity will generate ₹10,00,000 in synergies. You must agree on how to split this amount.</p>
-                <div class="case-highlight">
-                    <p><strong>💼 The Merger Negotiation</strong><br>
-                    You propose a share of the ₹10,00,000 for your firm. InnoSys has a secret reservation price – the minimum they will accept (a random number between ₹0 and ₹10,00,000). If your demand is ≤ their reservation, the deal is accepted and you get what you demanded; they get the rest. If your demand is too high, negotiations collapse and both get nothing.</p>
+                <div class="case-box">
+                    <strong>💼 MERGER SYNERGY</strong><br>
+                    Total synergy: ₹10,00,000. You propose a share. The other firm has a secret threshold (0–10,00,000). If your demand ≤ threshold, you get that amount; otherwise both get 0.
                 </div>
-                <p><strong>What share (in ₹) do you demand?</strong></p>
             </div>
-            <div class="decision-area">
-                <h3><i class="fas fa-hand-holding-heart"></i> Your demand (₹)</h3>
+            <div class="control-area">
+                <div class="control-title"><i class="fas fa-hand-holding-heart"></i> YOUR DEMAND (₹)</div>
                 <div class="input-group">
-                    <label for="bargainDemand">Demand (0‑10,00,000)</label>
+                    <label>DEMAND</label>
                     <input type="number" id="bargainDemand" min="0" max="1000000" step="10000" value="400000">
                 </div>
-                <button class="btn" id="bargainSubmit"><i class="fas fa-hand"></i> Propose split</button>
+                <button class="btn" id="bargainSubmit"><i class="fas fa-hand"></i> PROPOSE</button>
                 <div id="bargainResult" class="result-box">
-                    <h4>📘 Game theory insight</h4>
-                    <p>Enter a demand to see the bargaining outcome.</p>
+                    <h4>📊 RESULT</h4>
+                    <p>Enter a demand and click the button.</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Footer with credits -->
-    <div class="footer">
-        <div class="credits-heading">📢 PUBLISHED BY</div>
-        <div class="credits">
-            <span>Yug Manral 2324295</span>
-            <span>Aradhya Tripathy 2324218</span>
-            <span>Saksham Mohanty 2324269</span>
-            <span>Ameya Jamwal 2324212</span>
-        </div>
-        <div class="footer-note">
-            <i class="fas fa-flask"></i> No data collected · interactive learning
+        <div class="footer">
+            <i class="fas fa-flask"></i> NO DATA COLLECTED · PURE INTERACTIVE FUN
         </div>
     </div>
-</div>
 
-<script>
-    // Navigation
-    const navItems = document.querySelectorAll('.nav-item');
-    const experiments = document.querySelectorAll('.experiment');
-
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navItems.forEach(nav => nav.classList.remove('active'));
-            experiments.forEach(exp => exp.classList.remove('active'));
-            item.classList.add('active');
-            const target = item.getAttribute('data-experiment');
-            document.getElementById(target).classList.add('active');
+    <script>
+        // Navigation
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.game-panel');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                const target = tab.getAttribute('data-game');
+                document.getElementById(target).classList.add('active');
+            });
         });
-    });
 
-    // ========== PRISONER'S DILEMMA ==========
-    let pdChoice = null;
-    document.getElementById('pdCooperate').addEventListener('click', () => {
-        pdChoice = 'cooperate';
-        document.querySelectorAll('#pd .choice-btn').forEach(btn => btn.classList.remove('selected'));
-        document.getElementById('pdCooperate').classList.add('selected');
-    });
-    document.getElementById('pdDefect').addEventListener('click', () => {
-        pdChoice = 'defect';
-        document.querySelectorAll('#pd .choice-btn').forEach(btn => btn.classList.remove('selected'));
-        document.getElementById('pdDefect').classList.add('selected');
-    });
+        // ========== PRISONER ==========
+        let pdChoice = null;
+        document.getElementById('pdCooperate').addEventListener('click', () => {
+            pdChoice = 'cooperate';
+            document.querySelectorAll('#pd .choice-btn').forEach(btn => btn.classList.remove('selected'));
+            document.getElementById('pdCooperate').classList.add('selected');
+        });
+        document.getElementById('pdDefect').addEventListener('click', () => {
+            pdChoice = 'defect';
+            document.querySelectorAll('#pd .choice-btn').forEach(btn => btn.classList.remove('selected'));
+            document.getElementById('pdDefect').classList.add('selected');
+        });
 
-    function playPD() {
-        if (!pdChoice) { alert('Please select an action first.'); return; }
-        const other = Math.random() < 0.5 ? 'cooperate' : 'defect';
-        let yourProfit, otherProfit;
-        if (pdChoice === 'cooperate' && other === 'cooperate') { yourProfit = 5000; otherProfit = 5000; }
-        else if (pdChoice === 'cooperate' && other === 'defect') { yourProfit = 0; otherProfit = 8000; }
-        else if (pdChoice === 'defect' && other === 'cooperate') { yourProfit = 8000; otherProfit = 0; }
-        else { yourProfit = 2000; otherProfit = 2000; }
+        document.getElementById('pdSubmit').addEventListener('click', () => {
+            if (!pdChoice) { alert('Choose an action first!'); return; }
+            const other = Math.random() < 0.5 ? 'cooperate' : 'defect';
+            let you, partner;
+            if (pdChoice === 'cooperate' && other === 'cooperate') { you = 5000; partner = 5000; }
+            else if (pdChoice === 'cooperate' && other === 'defect') { you = 0; partner = 8000; }
+            else if (pdChoice === 'defect' && other === 'cooperate') { you = 8000; partner = 0; }
+            else { you = 2000; partner = 2000; }
 
-        const yourAction = pdChoice === 'cooperate' ? 'shared resources' : 'kept resources';
-        const otherAction = other === 'cooperate' ? 'shared' : 'kept';
+            const yourMove = pdChoice === 'cooperate' ? 'SHARE' : 'KEEP';
+            const otherMove = other === 'cooperate' ? 'SHARE' : 'KEEP';
 
-        let analysis = '';
-        if (pdChoice === 'defect' && other === 'defect') {
-            analysis = 'Both kept resources – the worst collective outcome. Game theory predicts that rational players will keep resources (the Nash equilibrium), even though sharing would have been better for both.';
-        } else if (pdChoice === 'cooperate' && other === 'cooperate') {
-            analysis = 'Both shared – the best mutual outcome. But is it stable? Each of you had an incentive to free‑ride by keeping resources. This illustrates the tension between individual and collective rationality.';
-        } else if (pdChoice === 'cooperate' && other === 'defect') {
-            analysis = 'You shared while your partner kept resources – you were exploited. This shows the risk of trusting others without commitment.';
-        } else {
-            analysis = 'You kept resources while your partner shared – you gained at their expense. This is the individualistic rational choice, but it hurts the relationship.';
-        }
+            let analysis = '';
+            if (pdChoice === 'defect' && other === 'defect') analysis = 'Both kept – worst collective outcome. Nash equilibrium.';
+            else if (pdChoice === 'cooperate' && other === 'cooperate') analysis = 'Both shared – best mutual result, but unstable.';
+            else if (pdChoice === 'cooperate' && other === 'defect') analysis = 'You were exploited.';
+            else analysis = 'You exploited your partner.';
 
-        document.getElementById('pdResult').innerHTML = `
-            <h4>📘 Outcome & Analysis</h4>
-            <p><strong>You ${yourAction}.</strong> Your partner ${otherAction}.</p>
-            <p><strong>Your prize:</strong> ₹${yourProfit}  ·  <strong>Partner's prize:</strong> ₹${otherProfit}</p>
-            <p>${analysis}</p>
-        `;
-    }
+            document.getElementById('pdResult').innerHTML = `
+                <h4>📊 RESULT</h4>
+                <p><strong>YOU:</strong> ${yourMove} · <strong>PARTNER:</strong> ${otherMove}</p>
+                <p><strong>Your prize:</strong> ₹${you} · Partner: ₹${partner}</p>
+                <p>${analysis}</p>
+            `;
+        });
 
-    const pdSubmit = document.createElement('button');
-    pdSubmit.className = 'btn';
-    pdSubmit.innerHTML = '<i class="fas fa-check"></i> See result';
-    pdSubmit.style.marginTop = '20px';
-    pdSubmit.addEventListener('click', playPD);
-    document.querySelector('#pd .decision-area').appendChild(pdSubmit);
+        // ========== AUCTION ==========
+        function random(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+        let userValue = random(1000, 10000);
+        document.getElementById('auctionValueDisplay').innerText = userValue;
 
-    // ========== ENGLISH AUCTION ==========
-    function randomValue(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+        document.getElementById('auctionSubmit').addEventListener('click', () => {
+            const bid = parseInt(document.getElementById('auctionBid').value);
+            if (bid < 1000 || bid > 10000) { alert('Bid must be ₹1000–10000'); return; }
+            const compValue = random(1000, 10000);
+            const compBid = random(1000, compValue);
+            let outcome, profit = 0;
+            if (bid > compBid) { outcome = 'WIN'; profit = userValue - bid; }
+            else if (compBid > bid) { outcome = 'LOSE'; }
+            else { if (Math.random() < 0.5) { outcome = 'WIN'; profit = userValue - bid; } else outcome = 'LOSE'; }
 
-    let currentUserValue = randomValue(1000, 10000);
-    document.getElementById('auctionValueDisplay').innerText = currentUserValue;
+            let tip = '';
+            if (outcome === 'WIN') {
+                if (profit > 0) tip = 'You made a profit!';
+                else if (profit < 0) tip = 'Winner’s curse – you overpaid.';
+                else tip = 'Broke even.';
+            } else tip = 'You lost. Optimal strategy: bid your true value.';
 
-    document.getElementById('auctionSubmit').addEventListener('click', () => {
-        const userBid = parseInt(document.getElementById('auctionBid').value);
-        if (isNaN(userBid) || userBid < 1000 || userBid > 10000) {
-            alert('Bid must be between ₹1000 and ₹10000');
-            return;
-        }
+            document.getElementById('auctionResult').innerHTML = `
+                <h4>📊 RESULT</h4>
+                <p><strong>Your value:</strong> ₹${userValue} · <strong>Your bid:</strong> ₹${bid} · <strong>Computer bid:</strong> ₹${compBid}</p>
+                <p><strong>${outcome}!</strong> ${outcome === 'WIN' ? `Profit: ₹${profit}` : ''}</p>
+                <p>${tip}</p>
+            `;
+            userValue = random(1000, 10000);
+            document.getElementById('auctionValueDisplay').innerText = userValue;
+        });
 
-        const compValue = randomValue(1000, 10000);
-        const compBid = randomValue(1000, compValue); // computer bids up to its value
+        // ========== BARGAIN ==========
+        document.getElementById('bargainSubmit').addEventListener('click', () => {
+            const demand = parseInt(document.getElementById('bargainDemand').value);
+            if (demand < 0 || demand > 1000000) { alert('Demand must be ₹0–10,00,000'); return; }
+            const threshold = random(0, 1000000);
+            const accepted = demand <= threshold;
+            const payoff = accepted ? demand : 0;
+            let note = accepted ? 'Deal accepted!' : 'Rejected – both get 0.';
+            if (accepted && demand > 700000) note += ' High risk, but succeeded.';
+            else if (!accepted && demand < 200000) note += ' Even low demands can fail if threshold is very low.';
 
-        let outcome, profit = 0;
-        if (userBid > compBid) {
-            outcome = 'win';
-            profit = currentUserValue - userBid;
-        } else if (compBid > userBid) {
-            outcome = 'lose';
-        } else {
-            if (Math.random() < 0.5) {
-                outcome = 'win';
-                profit = currentUserValue - userBid;
-            } else {
-                outcome = 'lose';
-            }
-        }
+            document.getElementById('bargainResult').innerHTML = `
+                <h4>📊 RESULT</h4>
+                <p><strong>Your demand:</strong> ₹${demand} · <strong>Partner threshold:</strong> ₹${threshold}</p>
+                <p><strong>${accepted ? '✅ ACCEPTED' : '❌ REJECTED'}</strong> – You get ₹${payoff}</p>
+                <p>${note}</p>
+            `;
+        });
 
-        let insight = '';
-        if (outcome === 'win') {
-            if (profit > 0) insight = 'Congratulations – you made a profit! Your bid was below the bat’s true value to you.';
-            else if (profit < 0) insight = 'You won, but at a loss. This is the "winner’s curse" – paying more than the item is worth.';
-            else insight = 'You broke even – your bid exactly matched your valuation.';
-        } else {
-            insight = 'You lost. In game theory, the optimal strategy is to bid your true value, no higher. That ensures you never overpay.';
-        }
-
-        document.getElementById('auctionResult').innerHTML = `
-            <h4>📘 Auction outcome</h4>
-            <p><strong>Your valuation:</strong> ₹${currentUserValue} · <strong>Your bid:</strong> ₹${userBid} · <strong>Competitor's bid:</strong> ₹${compBid}</p>
-            <p><strong>Result:</strong> You ${outcome === 'win' ? 'WON' : 'LOST'}. ${outcome === 'win' ? `Profit: ₹${profit}` : ''}</p>
-            <p>${insight}</p>
-            <p style="margin-top:10px;"><i>Tip:</i> In a private‑value auction, bidding your true valuation is a dominant strategy – it maximises your expected profit.</p>
-        `;
-
-        currentUserValue = randomValue(1000, 10000);
-        document.getElementById('auctionValueDisplay').innerText = currentUserValue;
-    });
-
-    // ========== NASH BARGAINING ==========
-    document.getElementById('bargainSubmit').addEventListener('click', () => {
-        const demand = parseInt(document.getElementById('bargainDemand').value);
-        if (isNaN(demand) || demand < 0 || demand > 1000000) {
-            alert('Demand must be between ₹0 and ₹10,00,000');
-            return;
-        }
-
-        const threshold = randomValue(0, 1000000);
-        const accepted = demand <= threshold;
-        const payoff = accepted ? demand : 0;
-
-        let explanation = '';
-        if (accepted) {
-            explanation = `Your demand (₹${demand}) was within InnoSys's secret reservation price (₹${threshold}). The merger is accepted – your firm gets ₹${demand}, InnoSys gets ₹${1000000 - demand}.`;
-            if (demand > 700000) explanation += ' A very high demand succeeded, but it was risky.';
-            else if (demand < 300000) explanation += ' A modest demand is almost always safe, but you leave money on the table.';
-        } else {
-            explanation = `Your demand (₹${demand}) exceeded InnoSys's reservation price (₹${threshold}). Negotiations collapse – both get nothing.`;
-            if (demand > 900000) explanation += ' Extremely high demands are likely to be rejected.';
-            else explanation += ' Even moderate demands can fail if the other party has a low reservation price.';
-        }
-
-        document.getElementById('bargainResult').innerHTML = `
-            <h4>📘 Bargaining result</h4>
-            <p><strong>Your demand:</strong> ₹${demand} · <strong>InnoSys's reservation:</strong> ₹${threshold}</p>
-            <p><strong>Outcome:</strong> ${accepted ? '✅ ACCEPTED' : '❌ REJECTED'} – your firm gets ₹${payoff}.</p>
-            <p>${explanation}</p>
-            <p style="margin-top:10px;"><i>Insight:</i> In Nash bargaining, the optimal demand balances your gain against the risk of rejection. The other party’s reservation price (disagreement point) determines the bargaining range.</p>
-        `;
-    });
-
-    // Enter key
-    document.getElementById('auctionBid').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') document.getElementById('auctionSubmit').click();
-    });
-    document.getElementById('bargainDemand').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') document.getElementById('bargainSubmit').click();
-    });
-</script>
+        // Enter key
+        document.getElementById('auctionBid').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('auctionSubmit').click(); });
+        document.getElementById('bargainDemand').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('bargainSubmit').click(); });
+    </script>
 </body>
 </html>
